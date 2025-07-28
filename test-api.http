@@ -1,0 +1,38 @@
+### Variables
+@baseUrl = http://localhost:3000
+@contentType = application/json
+@petId = 6886e92cadfab254f33cc418
+
+### Get All Pets
+GET {{baseUrl}}/api/pets
+Content-Type: {{contentType}}
+
+### Create a Pet (for testing purposes)
+POST {{baseUrl}}/api/pets
+Content-Type: {{contentType}}
+
+{
+  "name": "Buddy",
+  "species": "Dog",
+  "age": 3,
+  "price": 250.00
+}
+
+### Get Pet by ID (replace with actual ID after creating)
+GET {{baseUrl}}/api/pets/{{petId}}
+Content-Type: {{contentType}}
+
+### Update Pet (replace with actual ID after creating)
+PUT {{baseUrl}}/api/pets/{{petId}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Buddy Updated",
+  "species": "Dog",
+  "age": 4,
+  "price": 300.00
+}
+
+### Delete Pet (replace with actual ID after creating)
+DELETE {{baseUrl}}/api/pets/{{petId}}
+Content-Type: {{contentType}}
