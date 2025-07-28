@@ -1,4 +1,4 @@
-const PetNotFound = require('../domain/PetNotFound');
+const PetNotFound = require('../domain/petNotFound');
 
 class PetSearcher {
     constructor(petRepository) {

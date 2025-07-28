@@ -1,9 +1,9 @@
-const MongoPetRepository = require('./Pet/infrastructure/MongoPetRepository');
-const PetCreator = require('./Pet/application/PetCreator');
-const PetsFinder = require('./Pet/application/PetsFinder');
-const PetSearcher = require('./Pet/application/PetSearcher');
-const PetDeleter = require('./Pet/application/PetDeleter');
-const PetUpdater = require('./Pet/application/PetUpdater');
+const MongoPetRepository = require('./pet/infrastructure/mongoPetRepository');
+const PetCreator = require('./pet/application/petCreator');
+const PetsFinder = require('./pet/application/petsFinder');
+const PetSearcher = require('./pet/application/petSearcher');
+const PetDeleter = require('./pet/application/petDeleter');
+const PetUpdater = require('./pet/application/petUpdater');
 
 class DependencyContainer {
     constructor() {

@@ -1,5 +1,4 @@
-
-const PetModel = require('../Pet/infrastructure/PetModel');
+const PetModel = require('../pet/infrastructure/petModel');
 
 exports.getAvailablePets = async (req, res) => {
     try {

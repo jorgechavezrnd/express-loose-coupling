@@ -1,4 +1,4 @@
-const Pet = require('../domain/Pet');
+const Pet = require('../domain/pet');
 
 class PetCreator {
     constructor(petRepository) {

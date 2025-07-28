@@ -1,6 +1,5 @@
-
-const container = require('../DependencyContainer');
-const PetNotFound = require('../Pet/domain/PetNotFound');
+const container = require('../dependencyContainer');
+const PetNotFound = require('../pet/domain/petNotFound');
 
 exports.createPet = async (req, res) => {
     try {
