@@ -39,3 +39,19 @@ Content-Type: {{contentType}}
 ### Delete Pet (replace with actual ID after creating)
 DELETE {{baseUrl}}/api/pets/{{petId}}
 Content-Type: {{contentType}}
+
+###############################################
+### STORE ENDPOINTS
+###############################################
+
+### Get Available Pets from Store
+GET {{baseUrl}}/api/store/pets
+Content-Type: {{contentType}}
+
+### Store Checkout - Single Pet (using dynamic petId)
+POST {{baseUrl}}/api/store/checkout
+Content-Type: {{contentType}}
+
+{
+  "petIds": ["{{petId}}"]
+}
