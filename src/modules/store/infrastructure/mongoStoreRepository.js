@@ -1,6 +1,6 @@
 const StoreRepository = require('../domain/storeRepository');
-const Pet = require('../../pet/domain/pet');
-const PetModel = require('../../pet/infrastructure/petModel');
+const Pet = require('../../shared/domain/pet');
+const PetModel = require('../../shared/infrastructure/petModel');
 
 class MongoStoreRepository extends StoreRepository {
     async findAvailablePets() {

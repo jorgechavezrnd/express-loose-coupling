@@ -1,4 +1,4 @@
-const Pet = require('../domain/pet');
+const Pet = require('../../shared/domain/pet');
 
 class PetCreator {
     constructor(petRepository) {

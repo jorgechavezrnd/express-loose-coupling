@@ -1,6 +1,6 @@
 const PetRepository = require('../domain/petRepository');
-const Pet = require('../domain/pet');
-const PetModel = require('./petModel');
+const Pet = require('../../shared/domain/pet');
+const PetModel = require('../../shared/infrastructure/petModel');
 
 class MongoPetRepository extends PetRepository {
     async save(pet) {
