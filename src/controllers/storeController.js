@@ -1,6 +1,6 @@
 const container = require('../dependencyContainer');
-const PetsNotFound = require('../store/domain/petsNotFound');
-const InvalidCheckoutRequest = require('../store/domain/invalidCheckoutRequest');
+const PetsNotFound = require('../modules/store/domain/petsNotFound');
+const InvalidCheckoutRequest = require('../modules/store/domain/invalidCheckoutRequest');
 
 exports.getAvailablePets = async (req, res) => {
     try {

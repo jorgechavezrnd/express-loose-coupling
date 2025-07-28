@@ -1,13 +1,13 @@
-const MongoPetRepository = require('./pet/infrastructure/mongoPetRepository');
-const PetCreator = require('./pet/application/petCreator');
-const PetsFinder = require('./pet/application/petsFinder');
-const PetSearcher = require('./pet/application/petSearcher');
-const PetDeleter = require('./pet/application/petDeleter');
-const PetUpdater = require('./pet/application/petUpdater');
+const MongoPetRepository = require('./modules/pet/infrastructure/mongoPetRepository');
+const PetCreator = require('./modules/pet/application/petCreator');
+const PetsFinder = require('./modules/pet/application/petsFinder');
+const PetSearcher = require('./modules/pet/application/petSearcher');
+const PetDeleter = require('./modules/pet/application/petDeleter');
+const PetUpdater = require('./modules/pet/application/petUpdater');
 
-const MongoStoreRepository = require('./store/infrastructure/mongoStoreRepository');
-const AvailablePetsFinder = require('./store/application/availablePetsFinder');
-const PurchaseVerifier = require('./store/application/purchaseVerifier');
+const MongoStoreRepository = require('./modules/store/infrastructure/mongoStoreRepository');
+const AvailablePetsFinder = require('./modules/store/application/availablePetsFinder');
+const PurchaseVerifier = require('./modules/store/application/purchaseVerifier');
 
 class DependencyContainer {
     constructor() {
