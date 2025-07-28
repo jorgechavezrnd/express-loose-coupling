@@ -1,9 +1,9 @@
 
-const Pet = require('../models/pet.js');
+const PetModel = require('../Pet/infrastructure/PetModel');
 
 exports.getAvailablePets = async (req, res) => {
     try {
-        const pets = await Pet.find();
+        const pets = await PetModel.find();
         res.status(200).json(pets);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -18,7 +18,7 @@ exports.checkout = async (req, res) => {
     }
 
     try {
-        const pets = await Pet.find({ '_id': { $in: petIds } });
+        const pets = await PetModel.find({ '_id': { $in: petIds } });
 
         if (pets.length !== petIds.length) {
             return res.status(404).json({ message: 'One or more pets not found' });

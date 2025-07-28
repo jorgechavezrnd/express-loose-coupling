@@ -1,11 +1,11 @@
 
-const Pet = require('../models/pet.js');
+const container = require('../DependencyContainer');
 
 exports.createPet = async (req, res) => {
     try {
-        const pet = new Pet(req.body);
-        await pet.save();
-        res.status(201).json(pet);
+        const petCreator = container.getPetCreator();
+        const pet = await petCreator.create(req.body);
+        res.status(201).json(pet.toPrimitives());
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -13,8 +13,9 @@ exports.createPet = async (req, res) => {
 
 exports.getAllPets = async (req, res) => {
     try {
-        const pets = await Pet.find();
-        res.status(200).json(pets);
+        const petsFinder = container.getPetsFinder();
+        const pets = await petsFinder.findAll();
+        res.status(200).json(pets.map(pet => pet.toPrimitives()));
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -22,30 +23,39 @@ exports.getAllPets = async (req, res) => {
 
 exports.getPetById = async (req, res) => {
     try {
-        const pet = await Pet.findById(req.params.id);
-        if (!pet) return res.status(404).json({ message: 'Pet not found' });
-        res.status(200).json(pet);
+        const petSearcher = container.getPetSearcher();
+        const pet = await petSearcher.searchById(req.params.id);
+        res.status(200).json(pet.toPrimitives());
     } catch (error) {
+        if (error.message === 'Pet not found') {
+            return res.status(404).json({ message: error.message });
+        }
         res.status(500).json({ message: error.message });
     }
 };
 
 exports.updatePet = async (req, res) => {
     try {
-        const pet = await Pet.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!pet) return res.status(404).json({ message: 'Pet not found' });
-        res.status(200).json(pet);
+        const petUpdater = container.getPetUpdater();
+        const pet = await petUpdater.update(req.params.id, req.body);
+        res.status(200).json(pet.toPrimitives());
     } catch (error) {
+        if (error.message === 'Pet not found') {
+            return res.status(404).json({ message: error.message });
+        }
         res.status(400).json({ message: error.message });
     }
 };
 
 exports.deletePet = async (req, res) => {
     try {
-        const pet = await Pet.findByIdAndDelete(req.params.id);
-        if (!pet) return res.status(404).json({ message: 'Pet not found' });
+        const petDeleter = container.getPetDeleter();
+        await petDeleter.delete(req.params.id);
         res.status(200).json({ message: 'Pet deleted successfully' });
     } catch (error) {
+        if (error.message === 'Pet not found') {
+            return res.status(404).json({ message: error.message });
+        }
         res.status(500).json({ message: error.message });
     }
 };

@@ -19,7 +19,7 @@ Content-Type: {{contentType}}
 }
 
 ### Extract Pet ID from the create response
-@petId = {{createPet.response.body._id}}
+@petId = {{createPet.response.body.id}}
 
 ### Get Pet by ID (replace with actual ID after creating)
 GET {{baseUrl}}/api/pets/{{petId}}
