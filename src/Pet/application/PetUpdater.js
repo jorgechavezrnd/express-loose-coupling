@@ -1,3 +1,5 @@
+const PetNotFound = require('../domain/PetNotFound');
+
 class PetUpdater {
     constructor(petRepository) {
         this.petRepository = petRepository;
@@ -6,7 +8,7 @@ class PetUpdater {
     async update(id, petData) {
         const existingPet = await this.petRepository.findById(id);
         if (!existingPet) {
-            throw new Error('Pet not found');
+            throw new PetNotFound();
         }
 
         const updatedPet = await this.petRepository.update(id, petData);

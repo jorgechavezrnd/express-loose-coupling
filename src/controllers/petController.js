@@ -1,5 +1,6 @@
 
 const container = require('../DependencyContainer');
+const PetNotFound = require('../Pet/domain/PetNotFound');
 
 exports.createPet = async (req, res) => {
     try {
@@ -27,7 +28,7 @@ exports.getPetById = async (req, res) => {
         const pet = await petSearcher.searchById(req.params.id);
         res.status(200).json(pet.toPrimitives());
     } catch (error) {
-        if (error.message === 'Pet not found') {
+        if (error instanceof PetNotFound) {
             return res.status(404).json({ message: error.message });
         }
         res.status(500).json({ message: error.message });
@@ -40,7 +41,7 @@ exports.updatePet = async (req, res) => {
         const pet = await petUpdater.update(req.params.id, req.body);
         res.status(200).json(pet.toPrimitives());
     } catch (error) {
-        if (error.message === 'Pet not found') {
+        if (error instanceof PetNotFound) {
             return res.status(404).json({ message: error.message });
         }
         res.status(400).json({ message: error.message });
@@ -53,7 +54,7 @@ exports.deletePet = async (req, res) => {
         await petDeleter.delete(req.params.id);
         res.status(200).json({ message: 'Pet deleted successfully' });
     } catch (error) {
-        if (error.message === 'Pet not found') {
+        if (error instanceof PetNotFound) {
             return res.status(404).json({ message: error.message });
         }
         res.status(500).json({ message: error.message });

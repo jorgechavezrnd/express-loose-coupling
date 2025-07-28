@@ -1,3 +1,5 @@
+const PetNotFound = require('../domain/PetNotFound');
+
 class PetDeleter {
     constructor(petRepository) {
         this.petRepository = petRepository;
@@ -6,7 +8,7 @@ class PetDeleter {
     async delete(id) {
         const petExists = await this.petRepository.findById(id);
         if (!petExists) {
-            throw new Error('Pet not found');
+            throw new PetNotFound();
         }
         
         const deleted = await this.petRepository.delete(id);

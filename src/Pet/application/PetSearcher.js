@@ -1,3 +1,5 @@
+const PetNotFound = require('../domain/PetNotFound');
+
 class PetSearcher {
     constructor(petRepository) {
         this.petRepository = petRepository;
@@ -6,7 +8,7 @@ class PetSearcher {
     async searchById(id) {
         const pet = await this.petRepository.findById(id);
         if (!pet) {
-            throw new Error('Pet not found');
+            throw new PetNotFound();
         }
         return pet;
     }
