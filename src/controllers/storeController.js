@@ -18,7 +18,7 @@ exports.checkout = async (req, res) => {
     try {
         const purchaseVerifier = container.getPurchaseVerifier();
         const result = await purchaseVerifier.verifyAndProcessCheckout(petIds);
-        
+
         res.status(200).json({
             message: result.message,
             pets: result.pets.map(pet => pet.toPrimitives())
